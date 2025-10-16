@@ -45,6 +45,9 @@ Before running this application, ensure you have the following installed:
 ````bash
 git clone https://github.com/AjayPanchbhai/TodoApp.git
 
+Or
+
+Download Zip file
 
 ----------------------------------------------------------------------------------
 
