@@ -32,13 +32,13 @@ function App() {
       setSocket(newSocket);
 
       newSocket.on('connect', () => {
-        console.log('✅ Connected to server:', newSocket.id);
+        console.log('Connected to server:', newSocket.id);
         setConnectionStatus('connected');
         setError('');
       });
 
       newSocket.on('disconnect', (reason) => {
-        console.log('❌ Disconnected from server:', reason);
+        console.log('Disconnected from server:', reason);
         setConnectionStatus('disconnected');
         
         if (reason === 'io server disconnect') {
@@ -49,7 +49,7 @@ function App() {
       });
 
       newSocket.on('connect_error', (error) => {
-        console.error('❌ Connection error:', error);
+        console.error('Connection error:', error);
         setConnectionStatus('error');
         setError('Failed to connect to server. Retrying...');
         
@@ -59,35 +59,35 @@ function App() {
       });
 
       newSocket.on('reconnect', (attempt) => {
-        console.log('🔄 Reconnected to server. Attempt:', attempt);
+        console.log('Reconnected to server. Attempt:', attempt);
         setConnectionStatus('connected');
         setError('');
       });
 
       newSocket.on('reconnect_attempt', (attempt) => {
-        console.log('🔄 Attempting to reconnect... Attempt:', attempt);
+        console.log('Attempting to reconnect... Attempt:', attempt);
         setConnectionStatus('reconnecting');
       });
 
       newSocket.on('reconnect_error', (error) => {
-        console.error('❌ Reconnection error:', error);
+        console.error('Reconnection error:', error);
         setConnectionStatus('error');
       });
 
       newSocket.on('reconnect_failed', () => {
-        console.error('❌ Reconnection failed');
+        console.error('Reconnection failed');
         setConnectionStatus('failed');
         setError('Failed to reconnect to server. Please refresh the page.');
       });
 
       newSocket.on('taskCreated', (taskData) => {
-        console.log('📨 Received taskCreated event:', taskData);
+        console.log('Received taskCreated event:', taskData);
         const task = taskData.data || taskData;
         setTasks(prev => [task, ...prev]);
       });
 
       newSocket.on('taskUpdated', (taskData) => {
-        console.log('📨 Received taskUpdated event:', taskData);
+        console.log('Received taskUpdated event:', taskData);
         const updatedTask = taskData.data || taskData;
         setTasks(prev => prev.map(task => 
           task._id === updatedTask._id ? updatedTask : task
@@ -95,19 +95,19 @@ function App() {
       });
 
       newSocket.on('taskDeleted', (taskId) => {
-        console.log('📨 Received taskDeleted event:', taskId);
+        console.log('Received taskDeleted event:', taskId);
         setTasks(prev => prev.filter(task => task._id !== taskId));
       });
 
       newSocket.on('welcome', (data) => {
-        console.log('👋 Server welcome:', data);
+        console.log('Server welcome:', data);
       });
     };
 
     initializeSocket();
 
     return () => {
-      console.log('🧹 Cleaning up socket connection');
+      console.log('Cleaning up socket connection');
       if (socketRef.current) {
         socketRef.current.removeAllListeners();
         socketRef.current.disconnect();
@@ -140,7 +140,7 @@ function App() {
       }
       
       setTasks(tasksData);
-      console.log('📋 Loaded tasks:', tasksData.length);
+      console.log('Loaded tasks:', tasksData.length);
       
     } catch (err) {
       console.error('Error fetching tasks:', err);
