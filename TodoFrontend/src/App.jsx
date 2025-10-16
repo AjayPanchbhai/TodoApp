@@ -162,6 +162,19 @@ function App() {
     }
   };
 
+    // NEW: Update task function
+  const updateTask = async (taskId, taskData) => {
+    try {
+      setError('');
+      await taskAPI.updateTask(taskId, taskData);
+      // Socket.io will handle the real-time update
+    } catch (err) {
+      console.error('Error updating task:', err);
+      setError('Error updating task. Please try again.');
+      throw err;
+    }
+  };
+
   const updateTaskStatus = async (taskId, newStatus) => {
     try {
       setError('');
@@ -318,6 +331,7 @@ function App() {
               tasks={filteredTasks}
               onUpdateStatus={updateTaskStatus}
               onDeleteTask={deleteTask}
+              onUpdateTask={updateTask} 
             />
           </div>
         </div>

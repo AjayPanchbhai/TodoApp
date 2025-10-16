@@ -13,7 +13,7 @@ dotenv.config({
 const app = express();
 const server = http.createServer(app);
 
-// Enhanced CORS configuration - Apply CORS to all routes
+// CORS configuration - Apply CORS to all routes
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
@@ -35,7 +35,6 @@ const io = new SocketIOServer(server, {
   pingInterval: 25000,
   connectTimeout: 45000,
   transports: ["websocket", "polling"],
-  allowEIO3: true,
 });
 
 // Middlewares

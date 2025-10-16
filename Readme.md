@@ -38,6 +38,15 @@ Before running this application, ensure you have the following installed:
 - MongoDB (local installation or MongoDB Atlas account)
 - Git
 
+## Approach
+
+The real-time functionality was implemented using a bidirectional WebSocket connection between the React frontend and Node.js backend. When the React application loads, it establishes a persistent Socket.io connection to the server. The server maintains this connection and emits specific events (taskCreated, taskUpdated, taskDeleted) whenever CRUD operations are performed.On the client side, event listeners capture these events and update the local state immediately, providing instant synchronization across all connected clients without requiring page refreshes. The implementation follows an event-driven architecture where the server acts as the central hub broadcasting changes to all connected clients.
+
+## Chalanges Faced
+
+Some challenges were encountered during implementation. Initially, WebSocket connections were failing due to CORS issues and server connection were disconnecting frequently, which was resolved by properly configuring the Socket.io server with explicit CORS settings and adding more oprions into SocketIOServer class.
+
+
 ## Setup Instructions
 
 ### 1. Clone the Repository

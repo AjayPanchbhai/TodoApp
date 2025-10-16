@@ -1,6 +1,6 @@
 import TaskItem from './TaskItem';
 
-const TaskList = ({ tasks, onUpdateStatus, onDeleteTask }) => {
+const TaskList = ({ tasks, onUpdateStatus, onDeleteTask, onUpdateTask }) => {
   // Ensure tasks is always an array
   const tasksArray = Array.isArray(tasks) ? tasks : [];
 
@@ -31,6 +31,7 @@ const TaskList = ({ tasks, onUpdateStatus, onDeleteTask }) => {
           task={task}
           onUpdateStatus={onUpdateStatus}
           onDeleteTask={onDeleteTask}
+          onUpdateTask={onUpdateTask}
         />
       ))}
     </div>

@@ -25,7 +25,7 @@ const sendCompletionEmail = async (task) => {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1a936f; text-align: center;">Task Completed! </h2>
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+          <div style="background: #81b2e4ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
             <h3 style="color: #333; margin-bottom: 10px;">${task.title}</h3>
             <p style="color: #666; margin-bottom: 10px;"><strong>Description:</strong> ${
               task.description || "No description"
@@ -77,7 +77,7 @@ export const createTask = async (req, res) => {
 // get all tasks
 export const getAllTasks = async (req, res) => {
   try {
-    const tasks = await Task.find() ;
+    const tasks = await Task.find();
     res.json({
       success: true,
       count: tasks.length,
