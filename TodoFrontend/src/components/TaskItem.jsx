@@ -241,7 +241,7 @@ const TaskItem = ({ task, onUpdateStatus, onDeleteTask, onUpdateTask }) => {
         color: '#888'
       }}>
         <span>
-          Created: {new Date(task.creationDate).toLocaleDateString()}
+          Created: {new Date(task.createdAt).toLocaleDateString()}
         </span>
         <span>
           Owner: {task.ownerEmail}
